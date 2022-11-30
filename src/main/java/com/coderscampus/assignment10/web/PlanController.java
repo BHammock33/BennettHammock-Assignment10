@@ -28,7 +28,7 @@ public class PlanController {
 									  .queryParam("targetCalories", numCalories)
 									  .queryParam("diet", diet)
 									  .queryParam("exclude", exclusions)
-									  .queryParam( apiKey, "700e9a8811454149bcb551d8ee52aff5")
+									  .queryParam( "apiKey", apiKey)
 									  .build()
 									  .toUri();
 
@@ -47,7 +47,7 @@ public class PlanController {
 									  .queryParam("targetCalories", numCalories)
 									  .queryParam("diet", diet)
 									  .queryParam("exclude", exclusions)
-									  .queryParam("apiKey", Key )
+									  .queryParam("apiKey", apiKey )
 									  .build()
 									  .toUri();
 
