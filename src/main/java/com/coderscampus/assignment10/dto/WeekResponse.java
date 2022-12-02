@@ -5,26 +5,42 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class WeekResponse {
 	
-	@JsonProperty("meals")
-	private Meals meals;
+//	@JsonProperty("meals")
+//	private Meals meals;
+//	
+//	@JsonProperty("nutrients")
+//	private Nutrients nutrients;
+//	
+	@JsonProperty("week")
+	private Week week;
 	
-	@JsonProperty("nutrients")
-	private Nutrients nutrients;
-
-	public Meals getMeals() {
-		return meals;
+	public Week getWeek() {
+		return week;
+	}
+	public void setWeek(Week week) {
+		this.week=week;
+	}
+	@Override
+	public String toString() {
+		return "WeekResponse [week=" + week + "]";
 	}
 
-	public void setMeals(Meals meals) {
-		this.meals = meals;
-	}
+//	public Meals getMeals() {
+//		return meals;
+//	}
+//
+//	public void setMeals(Meals meals) {
+//		this.meals = meals;
+//	}
+//
+//	public Nutrients getNutrients() {
+//		return nutrients;
+//	}
+//
+//	public void setNutrients(Nutrients nutrients) {
+//		this.nutrients = nutrients;
+//	}
+	
 
-	public Nutrients getNutrients() {
-		return nutrients;
-	}
-
-	public void setNutrients(Nutrients nutrients) {
-		this.nutrients = nutrients;
-	}
-
+	
 }

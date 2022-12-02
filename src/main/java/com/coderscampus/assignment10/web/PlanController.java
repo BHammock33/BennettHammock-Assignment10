@@ -41,7 +41,7 @@ public class PlanController {
 
 	@GetMapping("mealplanner/day")
 	public ResponseEntity<DayResponse> getDayMeals(@RequestParam("timeFrame") String time, @RequestParam("targetCalories") String numCalories, @RequestParam String diet,
-			@RequestParam("exlude") String exclusions, @RequestParam String apiKey) {
+			@RequestParam("exclude") String exclusions) {
 
 		RestTemplate rt = new RestTemplate();
 
@@ -51,7 +51,6 @@ public class PlanController {
 									  .queryParam("targetCalories", numCalories)
 									  .queryParam("diet", diet)
 									  .queryParam("exclude", exclusions)
-									  
 									  .build()
 									  .toUri();
 

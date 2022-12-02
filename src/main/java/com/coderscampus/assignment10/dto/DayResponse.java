@@ -1,21 +1,18 @@
 package com.coderscampus.assignment10.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+import java.util.ArrayList;
 
 public class DayResponse {
 	
-	@JsonProperty("meals")
-	private Meals meals;
 	
-	@JsonProperty("nutrients")
+	private ArrayList<Meals> meals;
 	private Nutrients nutrients;
 
-	public Meals getMeals() {
+	public ArrayList<Meals> getMeals() {
 		return meals;
 	}
 
-	public void setMeals(Meals meals) {
+	public void setMeals(ArrayList<Meals> meals) {
 		this.meals = meals;
 	}
 
@@ -25,6 +22,11 @@ public class DayResponse {
 
 	public void setNutrients(Nutrients nutrients) {
 		this.nutrients = nutrients;
+	}
+
+	@Override
+	public String toString() {
+		return "DayResponse [meals=" + meals + ", nutrients=" + nutrients + "]";
 	}
 	
 	
