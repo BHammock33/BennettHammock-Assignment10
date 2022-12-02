@@ -15,20 +15,23 @@ import com.coderscampus.assignment10.dto.WeekResponse;
 @RestController
 public class PlanController {
 
-	String Key = "700e9a8811454149bcb551d8ee52aff5";
+//
+//	String Key = "700e9a8811454149bcb551d8ee52aff5";
+//	(defaultValue ="700e9a8811454149bcb551d8ee52aff5");
+	 //@RequestParam String apiKey
 	
 	@GetMapping("mealplanner/week")
 	public ResponseEntity<WeekResponse> getWeekMeals(@RequestParam("timeFrame") String time, @RequestParam("targetCalories") String numCalories, @RequestParam String diet,
-			@RequestParam("exclude") String exclusions, @RequestParam String apiKey) {
+			@RequestParam("exclude") String exclusions) {
 		RestTemplate rt = new RestTemplate();
 		// https://api.spoonacular.com/mealplanner/generate?timeFrame=day
 
 		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
+									  .queryParam( "apiKey", "700e9a8811454149bcb551d8ee52aff5")
 									  .queryParam("timeFrame", time)
 									  .queryParam("targetCalories", numCalories)
 									  .queryParam("diet", diet)
 									  .queryParam("exclude", exclusions)
-									  .queryParam( "apiKey", apiKey)
 									  .build()
 									  .toUri();
 
@@ -43,11 +46,12 @@ public class PlanController {
 		RestTemplate rt = new RestTemplate();
 
 		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
+									  .queryParam("apiKey", "700e9a8811454149bcb551d8ee52aff5" )
 									  .queryParam("timeFrame", time)
 									  .queryParam("targetCalories", numCalories)
 									  .queryParam("diet", diet)
 									  .queryParam("exclude", exclusions)
-									  .queryParam("apiKey", apiKey )
+									  
 									  .build()
 									  .toUri();
 
