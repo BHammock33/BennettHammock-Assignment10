@@ -1,6 +1,7 @@
 package com.coderscampus.assignment10.web;
 
 import java.net.URI;
+import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,17 +22,17 @@ public class PlanController {
 	 //@RequestParam String apiKey
 	
 	@GetMapping("mealplanner/week")
-	public ResponseEntity<WeekResponse> getWeekMeals(@RequestParam("timeFrame") String time, @RequestParam("targetCalories") String numCalories, @RequestParam String diet,
-			@RequestParam("exclude") String exclusions) {
+	public ResponseEntity<WeekResponse> getWeekMeals(@RequestParam(defaultValue = "week") Optional<String> time, @RequestParam("targetCalories") Optional<String> numCalories, @RequestParam Optional<String> diet,
+			@RequestParam("exclude") Optional<String> exclusions) {
 		RestTemplate rt = new RestTemplate();
 		// https://api.spoonacular.com/mealplanner/generate?timeFrame=day
 
 		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
 									  .queryParam( "apiKey", "700e9a8811454149bcb551d8ee52aff5")
-									  .queryParam("timeFrame", time)
-									  .queryParam("targetCalories", numCalories)
-									  .queryParam("diet", diet)
-									  .queryParam("exclude", exclusions)
+									  .queryParamIfPresent("timeFrame", time)
+									  .queryParamIfPresent("targetCalories",numCalories)
+									  .queryParamIfPresent("diet", diet)
+									  .queryParamIfPresent("exclude", exclusions)
 									  .build()
 									  .toUri();
 
@@ -40,17 +41,17 @@ public class PlanController {
 	}
 
 	@GetMapping("mealplanner/day")
-	public ResponseEntity<DayResponse> getDayMeals(@RequestParam("timeFrame") String time, @RequestParam("targetCalories") String numCalories, @RequestParam String diet,
-			@RequestParam("exclude") String exclusions) {
+	public ResponseEntity<DayResponse> getDayMeals(@RequestParam(defaultValue = "day") Optional<String> time, @RequestParam("targetCalories") Optional<String> numCalories, @RequestParam Optional<String> diet,
+			@RequestParam("exclude") Optional<String> exclusions) {
 
 		RestTemplate rt = new RestTemplate();
 
 		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
 									  .queryParam("apiKey", "700e9a8811454149bcb551d8ee52aff5" )
-									  .queryParam("timeFrame", time)
-									  .queryParam("targetCalories", numCalories)
-									  .queryParam("diet", diet)
-									  .queryParam("exclude", exclusions)
+									  .queryParamIfPresent("timeFrame", time)
+									  .queryParamIfPresent("targetCalories", numCalories)
+									  .queryParamIfPresent("diet", diet)
+									  .queryParamIfPresent("exclude", exclusions)
 									  .build()
 									  .toUri();
 
